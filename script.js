@@ -60,6 +60,7 @@ const calculator = document.querySelector('.calculator-body');
           const operations = document.querySelectorAll('.operation');
           const display = document.querySelector('.number-output');
           let mathArr = [];
+          let currentOp = null;
 
           keys.forEach(k =>{
               k.addEventListener('click', e =>{
@@ -68,20 +69,16 @@ const calculator = document.querySelector('.calculator-body');
                 const keyValue = key.value;
                 const displayValue = display.innerText; 
                 const currentValue = displayValue;
-                
 
                 //numbers displayed
                 if(e.target.classList.contains('digit')){
-                  if(displayValue === '0'){
-                      display.innerText = keyValue;
-                  }else {
-                      display.innerText = displayValue + keyValue;
-                  }
+                    display.innerText = keyValue;
                 }
+
                 //handle the operators  
                 if(e.target.classList.contains('operator')){ 
                     mathArr.push(displayValue); 
-                    mathArr.push(e.target.innerText);
+                    currentOp = e.target.innerText
                     console.log(mathArr);
                     display.innerText = keyValue;
                 }
@@ -96,34 +93,12 @@ const calculator = document.querySelector('.calculator-body');
                   console.log(mathArr);
                 }
                 
-                if(e.target.classList.contains('equals')){
+                if(currentOp !== null && (e.target.classList.contains('equals') || mathArr.length == 2)){
                   mathArr.push(displayValue);
-                  switch(mathArr[(mathArr.length -2)]){
-                    case "+":
-                      let addition = Number(mathArr[0]) + Number(mathArr[(mathArr.length - 1)]);
-                      display.innerText = addition;
-                      mathArr = [];
-                      break;
-                      case "-":
-                      let subtraction = Number(mathArr[0]) - Number(mathArr[(mathArr.length - 1)]);
-                      display.innerText = subtraction;
-                      mathArr = [];
-                      break;
-                      case "x":
-                      let multiplication = Number(mathArr[0]) * Number(mathArr[(mathArr.length - 1)]);
-                      display.innerText = multiplication;
-                      mathArr = [];
-                      break;
-                      case "/":
-                      let division = Number(mathArr[0]) / Number(mathArr[(mathArr.length - 1)]);
-                      display.innerText = division;
-                      mathArr = [];
-                      break;
-                  }
-                    
+                  display.innerText = calculate(mathArr, currentOp);
+                  mathArr = [display.innerText];
                 }
                 
-
                 })
                 
 
@@ -143,3 +118,20 @@ const calculator = document.querySelector('.calculator-body');
 
 
 };
+
+function calculate(mathArr, currentOp) {
+    switch (currentOp) {
+        case "+":
+            return Number(mathArr[0]) + Number(mathArr[1])
+            break;
+        case "-":
+            return Number(mathArr[0]) - Number(mathArr[1])
+            break;
+        case "x":
+            return Number(mathArr[0]) * Number(mathArr[1])
+            break;
+        case "/":
+            return Number(mathArr[0]) / Number(mathArr[1])
+            break;
+    }
+}

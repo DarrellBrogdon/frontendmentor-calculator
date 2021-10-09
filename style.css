@@ -15,6 +15,39 @@
           --button-color: #eae3dc;
           --button-font-color: #444b5a;
       }
+
+      .theme-1 {
+            --font-color: #35352c;
+            --display-background-color: #ededed;
+            --keypad-background-color: #d1cccc;
+            --special-operations-background-color: #377f86;
+            --special-operations-border-color: #1b5f65;
+            --special-operations-font-color: white;
+            --equal-sign-background-color: #ca5502;
+            --equal-sign-border-color',  '#893901;
+            --equal-sign-font-color: white;
+            --background-color: #e6e6e6;
+            --button-bottom-color: #a69d91;
+            --button-color: #e5e4e1;
+            --button-font-color: #444b5a;
+      }
+
+      .theme-2 {
+            --font-color: #ffe53d;
+            --display-background-color: #1d0934;
+            --keypad-background-color: #1d0934;
+            --special-operations-background-color:  #58077d;
+            --special-operations-border-color: #bc15f4;
+            --special-operations-font-color: white;
+            --equal-sign-background-color: #00e0d1;
+            --equal-sign-border-color',  '#6cf9f2;
+            --equal-sign-font-color: #1b2428;
+            --background-color: #160628;
+            --button-bottom-color: #871c9c;
+            --button-color',  '#341c4f;
+            --button-font-color: #ffe53d;
+      }
+
         *{
           font-family: 'Spartan', sans-serif;
         }
